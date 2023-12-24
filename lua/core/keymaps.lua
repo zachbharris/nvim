@@ -26,9 +26,8 @@ keymap("n", "<leader>sx", ":close<CR>")
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
-    local opts = { buffer = ev.buf }
     vim.keymap.set('n', '<leader>ff', function()
       vim.lsp.buf.format { async = true }
-    end, opts)
+    end, { desc = 'format buffer', buffer = ev.buf })
   end,
 })
