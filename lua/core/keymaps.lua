@@ -13,7 +13,7 @@ vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 
 -- general keymaps
-keymap("n", "x",'"_x')
+keymap("n", "x", '"_x')
 keymap("n", "<leader>+", "<C-a>")
 keymap("n", "<leader>-", "<C-x>")
 
@@ -21,3 +21,14 @@ keymap("n", "<leader>sv", "<C-w>v", { desc = "split vertical" })
 keymap("n", "<leader>sh", "<C-w>s", { desc = "split horizontal" })
 keymap("n", "<ledaer>se", "<C-w>=", { desc = "make split windows equal width" })
 keymap("n", "<leader>sx", ":close<CR>")
+
+-- lsp formatting
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', '<leader>ff', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+  end,
+})
