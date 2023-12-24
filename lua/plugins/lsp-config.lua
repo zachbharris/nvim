@@ -19,6 +19,7 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
       local lspconfig = require("lspconfig")
+
       lspconfig.tsserver.setup({})
       lspconfig.astro.setup({})
       lspconfig.tailwindcss.setup({})
