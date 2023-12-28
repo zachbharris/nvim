@@ -7,7 +7,10 @@ return {
       require("telescope").setup({
         defaults = {
           file_ignore_patterns = { "node_modules" }
-        }
+        },
+        find_files = {
+          hidden = true,
+        },
       })
 
       vim.keymap.set("n", "<C-p>", builtin.find_files, { desc = "search files" })

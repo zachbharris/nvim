@@ -1,3 +1,12 @@
+local function organize_imports()
+  local params = {
+    command = "_typescript.organizeImports",
+    arguments = { vim.api.nvim_buf_get_name(0) },
+    title = ""
+  }
+  vim.lsp.buf.execute_command(params)
+end
+
 return {
   {
     "williamboman/mason.nvim",
@@ -20,10 +29,18 @@ return {
     config = function()
       local lspconfig = require("lspconfig")
 
-      lspconfig.tsserver.setup({})
+      lspconfig.tsserver.setup({
+        commands = {
+          OrganizeImports = {
+            organize_imports,
+            description = "Organize Imports"
+          }
+        },
+      })
       lspconfig.astro.setup({})
       lspconfig.tailwindcss.setup({})
       lspconfig.lua_ls.setup({})
+      lspconfig.jsonls.setup({})
     end
   }
 }
