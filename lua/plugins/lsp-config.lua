@@ -1,46 +1,45 @@
-local function organize_imports()
-  local params = {
-    command = "_typescript.organizeImports",
-    arguments = { vim.api.nvim_buf_get_name(0) },
-    title = ""
-  }
-  vim.lsp.buf.execute_command(params)
-end
-
 return {
   {
     "williamboman/mason.nvim",
+    lazy = false,
     config = function()
       require("mason").setup()
-    end
+    end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "lua_ls", "astro", "cssls", "html", "jsonls", "tailwindcss"
-        }
-      })
-    end
+    lazy = false,
+    opts = {
+      auto_install = true,
+    },
   },
   {
     "neovim/nvim-lspconfig",
+    lazy = false,
     config = function()
-      local lspconfig = require("lspconfig")
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+      local lspconfig = require("lspconfig")
       lspconfig.tsserver.setup({
-        commands = {
-          OrganizeImports = {
-            organize_imports,
-            description = "Organize Imports"
-          }
-        },
+        capabilites = capabilities,
       })
-      lspconfig.astro.setup({})
-      lspconfig.tailwindcss.setup({})
-      lspconfig.lua_ls.setup({})
-      lspconfig.jsonls.setup({})
-    end
-  }
+      lspconfig.html.setup({
+        capabilites = capabilities,
+      })
+      lspconfig.lua_ls.setup({
+        capabilites = capabilities,
+      })
+      lspconfig.astro.setup({
+        capabilities = capabilities
+      })
+      lspconfig.gopls.setup({
+        capabilities = capabilities,
+      })
+
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+      vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
+      vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
+      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+    end,
+  },
 }

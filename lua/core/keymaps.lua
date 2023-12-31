@@ -22,12 +22,3 @@ keymap("n", "<leader>sh", "<C-w>s", { desc = "split horizontal" })
 keymap("n", "<ledaer>se", "<C-w>=", { desc = "make split windows equal width" })
 keymap("n", "<leader>sx", ":close<CR>")
 
--- lsp formatting
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-  callback = function(ev)
-    vim.keymap.set('n', '<leader>ff', function()
-      vim.lsp.buf.format { async = true }
-    end, { desc = 'format buffer', buffer = ev.buf })
-  end,
-})
