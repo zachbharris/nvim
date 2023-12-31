@@ -22,3 +22,6 @@ keymap("n", "<leader>sh", "<C-w>s", { desc = "split horizontal" })
 keymap("n", "<ledaer>se", "<C-w>=", { desc = "make split windows equal width" })
 keymap("n", "<leader>sx", ":close<CR>")
 
+-- hop
+keymap('', 'f', "<cmd>lua require'hop'.hint_char1()<cr>", {})
+keymap("", "F", "<cmd>lua require'hop'.hint_char2()<cr>", {})
