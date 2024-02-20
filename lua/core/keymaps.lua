@@ -23,5 +23,11 @@ keymap("n", "<ledaer>se", "<C-w>=", { desc = "make split windows equal width" })
 keymap("n", "<leader>sx", ":close<CR>")
 
 -- hop
-keymap('', 'f', "<cmd>lua require'hop'.hint_char1()<cr>", {})
+keymap("", "f", "<cmd>lua require'hop'.hint_char1()<cr>", {})
 keymap("", "F", "<cmd>lua require'hop'.hint_char2()<cr>", {})
+
+-- bufferline
+keymap("n", "<leader>bx", ":Bdelete<CR>", { desc = "close current buffer" })
+keymap("n", "<leader>bl", ":BufferLineCycleNext<CR>", { desc = "next buffer" })
+keymap("n", "<leader>bh", ":BufferLineCyclePrev<CR>", { desc = "previous buffer" })
+keymap("n", "<leader>bp", ":BufferLinePick<CR>", { desc = "pick buffer" })
