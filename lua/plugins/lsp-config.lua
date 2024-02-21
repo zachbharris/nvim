@@ -46,7 +46,8 @@ return {
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
-			vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, {})
+			vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, {})
+      vim.keymap.set("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "suggestions for missing imports" })
 		end,
 	},
 }
