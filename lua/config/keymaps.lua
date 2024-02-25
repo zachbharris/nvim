@@ -38,3 +38,8 @@ keymap("n", "<leader>lg", ":LazyGit<CR>", { desc = "Toggle LazyGit", silent = tr
 
 -- none-ls
 keymap("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format buffer", silent = true })
+
+-- hop
+keymap("", "f", "<cmd>lua require'hop'.hint_char1()<cr>", { silent = true })
+keymap("", "F", "<cmd>lua require'hop'.hint_char2()<cr>", { silent = true })
+
