@@ -1,5 +1,19 @@
 return {
 	{
+		"williamboman/mason.nvim",
+		lazy = false,
+		config = function()
+			require("mason").setup()
+		end,
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+		lazy = false,
+		opts = {
+			auto_install = true,
+		},
+	},
+	{
 		"L3MON4D3/LuaSnip",
 		lazy = false,
 		dependencies = {
@@ -20,6 +34,7 @@ return {
 		lazy = false,
 		config = function()
 			local cmp = require("cmp")
+
 			cmp.setup({
 				window = {
 					documentation = cmp.config.window.bordered(),
@@ -31,9 +46,7 @@ return {
 					end,
 				},
 				mapping = cmp.mapping.preset.insert({
-					-- ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-					-- ["<C-f>"] = cmp.mapping.scroll_docs(4),
-					["<C-Space>"] = cmp.mapping.complete(),
+					["<C-Space"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.abort(),
 					["<CR>"] = cmp.mapping.confirm({ select = false }),
 				}),
@@ -45,6 +58,22 @@ return {
 					{ name = "buffer" },
 				}),
 			})
+		end,
+	},
+	{
+		"neovim/nvim-lspconfig",
+		lazy = false,
+		config = function()
+			local cap = require("cmp_nvim_lsp").default_capabilities()
+			local lspconfig = require("lspconfig")
+
+			lspconfig.tsserver.setup({ capabilities = cap })
+			lspconfig.html.setup({ capabilities = cap })
+			lspconfig.lua_ls.setup({ capabilities = cap })
+			lspconfig.astro.setup({ capabilities = cap })
+			lspconfig.gopls.setup({ capabilities = cap })
+			lspconfig.tailwindcss.setup({ capabilities = cap })
+			lspconfig.eslint.setup({ capabilities = cap })
 		end,
 	},
 }
