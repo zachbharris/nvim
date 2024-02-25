@@ -4,14 +4,14 @@ return {
 		lazy = false,
 		config = function()
 			require("mason").setup()
-		end
+		end,
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
 		lazy = false,
 		opts = {
 			auto_install = true,
-		}
+		},
 	},
 	{
 		"L3MON4D3/LuaSnip",
@@ -22,7 +22,7 @@ return {
 		},
 		config = function()
 			require("luasnip.loaders.from_vscode").lazy_load()
-		end
+		end,
 	},
 	{
 		"hrsh7th/cmp-nvim-lsp",
@@ -43,7 +43,7 @@ return {
 				snippet = {
 					expand = function(args)
 						require("luasnip").lsp_expand(args.body)
-					end
+					end,
 				},
 				mapping = cmp.mapping.preset.insert({
 					["<C-Space"] = cmp.mapping.complete(),
@@ -51,14 +51,14 @@ return {
 					["<CR>"] = cmp.mapping.confirm({ select = false }),
 				}),
 				sources = cmp.config.sources({
-          { name = "copilot" },
+					{ name = "copilot" },
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 				}, {
-					{ name = "buffer" }
-				})
+					{ name = "buffer" },
+				}),
 			})
-		end
+		end,
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -74,6 +74,6 @@ return {
 			lspconfig.gopls.setup({ capabilities = cap })
 			lspconfig.tailwindcss.setup({ capabilities = cap })
 			lspconfig.eslint.setup({ capabilities = cap })
-		end
-	}
+		end,
+	},
 }
