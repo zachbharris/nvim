@@ -24,14 +24,17 @@ keymap("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open float" })
 keymap("n", "<C-n>", ":Neotree filesystem toggle right<CR>", { desc = "Toggle filesystem tree", silent = true })
 
 -- bufferline
-keymap("n", "Bx", ":Bdelete<CR>", { desc = "Close current buffer" })
-keymap("n", "Bh", ":BufferLineCyclePrev<CR>", { desc = "Go to previous buffer" })
-keymap("n", "Bl", ":BufferLineCycleNext<CR>", { desc = "Go to next buffer" })
-keymap("n", "Bp", ":BufferLinePick<CR>", { desc = "Pick buffer" })
+keymap("n", "Bx", ":Bdelete<CR>", { desc = "Close current buffer", silent = true })
+keymap("n", "Bh", ":BufferLineCyclePrev<CR>", { desc = "Go to previous buffer", silent = true })
+keymap("n", "Bl", ":BufferLineCycleNext<CR>", { desc = "Go to next buffer", silent = true })
+keymap("n", "Bp", ":BufferLinePick<CR>", { desc = "Pick buffer", silent = true })
 
 -- gitsigns
 keymap("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", { desc = "Preview git diff" })
 keymap("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>", { desc = "Toggle git blame for current line" })
+
+-- lazygit
+keymap("n", "<leader>lg", ":LazyGit<CR>", { desc = "Toggle LazyGit", silent = true })
 
 -- none-ls
 keymap("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format buffer", silent = true })
