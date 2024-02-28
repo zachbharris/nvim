@@ -24,10 +24,23 @@ keymap("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open float" })
 keymap("n", "<C-n>", ":Neotree filesystem toggle right<CR>", { desc = "Toggle filesystem tree", silent = true })
 
 -- bufferline
-keymap("n", "Bx", ":Bdelete<CR>", { desc = "Close current buffer", silent = true })
+keymap("n", "BX", ":Bdelete<CR>", { desc = "Close current buffer", silent = true })
 keymap("n", "Bh", ":BufferLineCyclePrev<CR>", { desc = "Go to previous buffer", silent = true })
 keymap("n", "Bl", ":BufferLineCycleNext<CR>", { desc = "Go to next buffer", silent = true })
 keymap("n", "Bp", ":BufferLinePick<CR>", { desc = "Pick buffer", silent = true })
+keymap("n", "Bxo", ":BufferLineCloseOthers<CR>", { desc = "Close all other visibile buffers", silent = true })
+keymap(
+  "n",
+  "Bxh",
+  ":BufferLineCloseLeft<CR>",
+  { desc = "Close all visible buffers to the left of the current", silent = true }
+)
+keymap(
+  "n",
+  "Bxl",
+  ":BufferLineCloseRight<CR>",
+  { desc = "Close all visible buffers to the right of the current", silent = true }
+)
 
 -- gitsigns
 keymap("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", { desc = "Preview git diff" })
