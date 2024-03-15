@@ -1,9 +1,9 @@
 return {
-  "EdenEast/nightfox.nvim",
-  lazy = false,
+  "catppuccin/nvim",
+  name = "catppuccin",
   priority = 1000,
   config = function()
-    require("nightfox").setup()
-    vim.cmd("colorscheme carbonfox")
+    require("catppuccin").setup()
+    vim.cmd("colorscheme catppuccin")
   end,
 }
